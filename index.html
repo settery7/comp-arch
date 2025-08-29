@@ -3,47 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number System Converter</title>
+    <title>Number System Converter & Secret Code Translator</title>
+    
+    <script src="logics.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Number System Converter</h1>
-            <p class="description">Convert decimal numbers to binary, octal, and hexadecimal representations</p>
+            <h1>Number System Converter & Secret Code Translator</h1>
+            <p class="description">A comprehensive tool for number conversion, addition in different bases, and secret code translation</p>
         </header>
         
-        <div class="input-group">
-            <label for="decimalInput">Enter a decimal number:</label>
-            <input type="text" id="decimalInput" placeholder="Enter a decimal number (e.g., 255)" autofocus>
+        <div class="menu">
+            <button class="menu-btn active" data-target="decimal-conversion">Decimal Conversion</button>
+            <button class="menu-btn" data-target="addition">Addition in Any Base</button>
+            <button class="menu-btn" data-target="encode">Secret Code (Encode)</button>
+            <button class="menu-btn" data-target="decode">Secret Code (Decode)</button>
+            <button class="menu-btn" data-target="exit">Exit</button>
         </div>
         
-        <button class="btn" id="convertBtn">Convert</button>
-        
-        <div class="results">
-            <div class="result-box">
-                <div class="result-title">Binary</div>
-                <div class="result-value" id="binaryResult">-</div>
+        <!-- Decimal Conversion Section -->
+        <div class="content-section active" id="decimal-conversion">
+            <div class="section-title">Decimal to Binary/Octal/Hex Conversion</div>
+            <div class="input-group">
+                <label for="decimalInput">Enter a decimal number:</label>
+                <input type="text" id="decimalInput" placeholder="Enter a decimal number (e.g., 2025)">
+            </div>
+            <button class="btn" id="convertDecimalBtn">Convert</button>
+            
+            <div class="results">
+                <div class="result-box">
+                    <div class="result-title">Decimal</div>
+                    <div class="result-value" id="decimalResult">-</div>
+                </div>
+                
+                <div class="result-box">
+                    <div class="result-title">Binary</div>
+                    <div class="result-value" id="binaryResult">-</div>
+                </div>
+                
+                <div class="result-box">
+                    <div class="result-title">Octal</div>
+                    <div class="result-value" id="octalResult">-</div>
+                </div>
+                
+                <div class="result-box">
+                    <div class="result-title">Hex</div>
+                    <div class="result-value" id="hexResult">-</div>
+                </div>
             </div>
             
-            <div class="result-box">
-                <div class="result-title">Octal</div>
-                <div class="result-value" id="octalResult">-</div>
-            </div>
-            
-            <div class="result-box">
-                <div class="result-title">Hexadecimal</div>
-                <div class="result-value" id="hexResult">-</div>
-            </div>
+            <div class="error" id="decimalError">Please enter a valid decimal number!</div>
         </div>
         
-        <div class="error" id="errorMsg">Please enter a valid decimal number!</div>
+        <!-- Addition in Any Base Section -->
+        <div class="content-section" id="addition">
+            <div class="section-title">Addition in Any Base</div>
+            
+            <div class="input-group">
+                <label for="firstNumber">Enter first number:</label>
+                <input type="text" id="firstNumber" placeholder="Enter a number">
+            </div>
+            
+            <div class="input-group">
+                <label for="firstBase">Enter its base (2, 8, 10, 16):</label>
+                <select id="firstBase">
+                    <option value="2">Binary (2)</option>
+                    <option value="8">Octal (8)</option>
+                    <option value="10" selected>Decimal (10)</option>
+                    <option value="16">Hexadecimal (16)</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="secondNumber">Enter second number:</label>
+                <input type="text" id="secondNumber" placeholder="Enter a number">
+            </div>
+            
+            <div class="input-group">
+                <label for="secondBase">Enter its base (2, 8, 10, 16):</label>
+                <select id="secondBase">
+                    <option value="2">Binary (2)</option>
+                    <option value="8">Octal (8)</option>
+                    <option value="10" selected>Decimal (10)</option>
+                    <option value="16">Hexadecimal (16)</option>
+                </select>
+            </div>
+            
+            <button class="btn" id="addBtn">Add Numbers</button>
+            
+            <div class="results">
+                <div class="result-box">
+                    <div class="result-title">Decimal</div>
+                    <div class="result-value" id="addDecimalResult">-</div>
+                </div>
+                
+                <div class="result-box">
+                    <div class="result-title">Binary</div>
+                    <div class="result-value" id="addBinaryResult">-</div>
+                </div>
+                
+                <div class="result-box">
+                    <div class="result-title">Octal</div>
+                    <div class="result-value" id="addOctalResult">-</div>
+                </div>
+                
+                <div class="result-box">
+                    <div class="result-title">Hex</div>
+                    <div class="result-value" id="addHexResult">-</div>
+                </div>
+            </div>
+            
+            <div class="error" id="additionError">Please enter valid numbers!</div>
+        </div>
+        
+        <!-- Secret Code Encode Section -->
+        <div class="content-section" id="encode">
+            <div class="section-title">Secret Code Translator (Encode)</div>
+            
+            <div class="input-group">
+                <label for="messageInput">Enter message:</label>
+                <input type="text" id="messageInput" placeholder="Enter your message (e.g., HELLO)">
+            </div>
+            
+            <div class="input-group">
+                <label for="encodeKey">Enter secret key (decimal):</label>
+                <input type="text" id="encodeKey" placeholder="Enter a decimal number (e.g., 5)">
+            </div>
+            
+            <button class="btn" id="encodeBtn">Encode Message</button>
+            
+            <div class="input-group">
+                <label>Encoded (decimal values):</label>
+                <div class="array-result" id="decimalEncodeResult">-</div>
+            </div>
+            
+            <div class="input-group">
+                <label>Encoded (hex values):</label>
+                <div class="array-result" id="hexEncodeResult">-</div>
+            </div>
+            
+            <div class="error" id="encodeError">Please enter a valid message and key!</div>
+        </div>
+        
+        <!-- Secret Code Decode Section -->
+        <div class="content-section" id="decode">
+            <div class="section-title">Secret Code Translator (Decode)</div>
+            
+            <div class="input-group">
+                <label for="encodedValues">Enter encoded values (comma separated):</label>
+                <input type="text" id="encodedValues" placeholder="Enter values (e.g., 77, 74, 81, 81, 84)">
+            </div>
+            
+            <div class="input-group">
+                <label for="decodeKey">Enter secret key (decimal):</label>
+                <input type="text" id="decodeKey" placeholder="Enter a decimal number (e.g., 5)">
+            </div>
+            
+            <button class="btn" id="decodeBtn">Decode Message</button>
+            
+            <div class="input-group">
+                <label>Decoded Message:</label>
+                <div class="array-result" id="decodeResult">-</div>
+            </div>
+            
+            <div class="error" id="decodeError">Please enter valid encoded values and key!</div>
+        </div>
+        
+        <!-- Exit Section -->
+        <div class="content-section" id="exit">
+            <div class="section-title">Exit Program</div>
+            <div class="result-value" style="text-align: center; font-size: 1.5rem; margin: 30px 0;">
+                Exiting program. Goodbye!
+            </div>
+            <p style="text-align: center; color: #ccc;">Thank you for using the Number System Converter & Secret Code Translator</p>
+        </div>
         
         <footer>
-            <p>Created with JavaScript • Ready for GitHub Pages</p>
+            <p>Created with JavaScript • Number Systems, Conversion, and Addition</p>
         </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script src="logics.js"></script>
+
 </body>
 </html>

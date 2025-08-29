@@ -15,11 +15,11 @@ body {
 }
 
 .container {
-    background-color: rgba(18, 18, 18, 0.9);
+    background-color: rgba(18, 18, 18, 0.95);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     width: 100%;
-    max-width: 500px;
+    max-width: 800px;
     padding: 30px;
     color: #fff;
 }
@@ -43,8 +43,57 @@ h1 {
     margin-bottom: 20px;
 }
 
-.input-group {
+.menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
     margin-bottom: 25px;
+}
+
+.menu-btn {
+    padding: 15px;
+    background: linear-gradient(to right, #2c3e50, #4a6491);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.menu-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(to right, #b21f1f, #fdbb2d);
+}
+
+.menu-btn.active {
+    background: linear-gradient(to right, #b21f1f, #fdbb2d);
+}
+
+.content-section {
+    background-color: #222;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    color: #fdbb2d;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 15px;
 }
 
 label {
@@ -54,18 +103,18 @@ label {
     color: #fdbb2d;
 }
 
-input {
+select, input, textarea {
     width: 100%;
     padding: 12px 15px;
     border: 2px solid #444;
     border-radius: 8px;
     background-color: #333;
     color: #fff;
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: all 0.3s ease;
 }
 
-input:focus {
+select:focus, input:focus, textarea:focus {
     border-color: #fdbb2d;
     outline: none;
     box-shadow: 0 0 0 3px rgba(253, 187, 45, 0.3);
@@ -83,7 +132,7 @@ input:focus {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-bottom: 25px;
+    margin: 20px 0;
 }
 
 .btn:hover {
@@ -97,12 +146,13 @@ input:focus {
 
 .results {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 15px;
+    margin-top: 20px;
 }
 
 .result-box {
-    background-color: #222;
+    background-color: #333;
     border-radius: 8px;
     padding: 15px;
     text-align: center;
@@ -115,10 +165,11 @@ input:focus {
 }
 
 .result-value {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: #fdbb2d;
     word-break: break-all;
+    min-height: 1.4em;
 }
 
 .error {
@@ -129,6 +180,14 @@ input:focus {
     display: none;
 }
 
+.array-result {
+    background-color: #333;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+    font-family: monospace;
+}
+
 footer {
     text-align: center;
     margin-top: 30px;
@@ -136,16 +195,12 @@ footer {
     font-size: 0.9rem;
 }
 
-@media (max-width: 500px) {
-    .container {
-        padding: 20px;
+@media (max-width: 768px) {
+    .menu {
+        grid-template-columns: 1fr;
     }
     
     h1 {
         font-size: 2rem;
-    }
-    
-    .results {
-        grid-template-columns: 1fr;
     }
 }
