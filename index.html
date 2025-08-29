@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number System Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Number System Converter</h1>
+            <p class="description">Convert decimal numbers to binary, octal, and hexadecimal representations</p>
+        </header>
+        
+        <div class="input-group">
+            <label for="decimalInput">Enter a decimal number:</label>
+            <input type="text" id="decimalInput" placeholder="Enter a decimal number (e.g., 255)" autofocus>
+        </div>
+        
+        <button class="btn" id="convertBtn">Convert</button>
+        
+        <div class="results">
+            <div class="result-box">
+                <div class="result-title">Binary</div>
+                <div class="result-value" id="binaryResult">-</div>
+            </div>
+            
+            <div class="result-box">
+                <div class="result-title">Octal</div>
+                <div class="result-value" id="octalResult">-</div>
+            </div>
+            
+            <div class="result-box">
+                <div class="result-title">Hexadecimal</div>
+                <div class="result-value" id="hexResult">-</div>
+            </div>
+        </div>
+        
+        <div class="error" id="errorMsg">Please enter a valid decimal number!</div>
+        
+        <footer>
+            <p>Created with JavaScript • Ready for GitHub Pages</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
